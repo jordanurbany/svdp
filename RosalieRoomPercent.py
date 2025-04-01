@@ -61,8 +61,8 @@ def calculate_rh_room_occupancy(occupancy_file, start_date_str, end_date_str):
         exit_date = min(exit_date, end_date)
 
         occupancy_duration = (exit_date - entry_date).days + 1
-        if occupancy_duration > 0:
 
+        if occupancy_duration > 0:
             # Extract the room number from the bed_name (Rosalie House format)
             try:
                 room_number = bed_name.split('Rm ')[1].split('-')[0]  # Extract room number
