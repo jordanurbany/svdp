@@ -86,13 +86,28 @@ def calculate_rh_room_occupancy(occupancy_file, start_date_str, end_date_str):
 
 # --- Example Usage ---
 if __name__ == "__main__":
-    occupancy_file_path = r"C:\Users\jurbany\Desktop\BrennenBedPercent\RH18-24LastYR.csv"  # Updated file path
+    occupancy_file_path_2024 = r"C:\Users\jurbany\Desktop\BrennenBedPercent\RH18-24LastYR.csv"  # Updated file path
+    occupancy_file_path_2025 = r"C:\Users\jurbany\Desktop\BrennenBedPercent\RH2025.csv" #New 2025 data
     start_date = "2024-01-01"
     end_date = "2024-12-31"
 
-    total_room_nights, occupied_room_nights, room_occupancy_percentage = calculate_rh_room_occupancy(occupancy_file_path, start_date, end_date)
+    start_date_2025 = "2025-01-01" #Start of 2025
+    end_date_2025 = "2025-06-30" #end of 2025-- changed to june 30 for 6 month
 
-    if total_room_nights is not None:
-        print(f"Total Available Room Nights: {total_room_nights}")
-        print(f"Total Occupied Room Nights: {occupied_room_nights}")
-        print(f"Room Occupancy Percentage: {room_occupancy_percentage:.2f}%")
+    #Process 2024 data
+    total_room_nights_2024, occupied_room_nights_2024, room_occupancy_percentage_2024 = calculate_rh_room_occupancy(occupancy_file_path_2024, start_date, end_date)
+
+    if total_room_nights_2024 is not None:
+        print("-----2024 Data-----")
+        print(f"Total Available Room Nights (2024): {total_room_nights_2024}")
+        print(f"Total Occupied Room Nights (2024): {occupied_room_nights_2024}")
+        print(f"Room Occupancy Percentage (2024): {room_occupancy_percentage_2024:.2f}%")
+
+    #Process 2025 data
+    total_room_nights_2025, occupied_room_nights_2025, room_occupancy_percentage_2025 = calculate_rh_room_occupancy(occupancy_file_path_2025, start_date_2025, end_date_2025)
+
+    if total_room_nights_2025 is not None:
+        print("-----2025 Data (First 6 Months)-----")
+        print(f"Total Available Room Nights (2025 - First 6 Months): {total_room_nights_2025}")
+        print(f"Total Occupied Room Nights (2025 - First 6 Months): {occupied_room_nights_2025}")
+        print(f"Room Occupancy Percentage (2025 - First 6 Months): {room_occupancy_percentage_2025:.2f}%")
